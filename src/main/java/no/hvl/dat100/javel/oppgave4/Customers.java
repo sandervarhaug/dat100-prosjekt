@@ -9,7 +9,7 @@ public class Customers {
     // a) Complete constructor
     public Customers(int size) {
 
-        // TODO
+        this.customers = new Customer[size];
 
     }
 
@@ -19,7 +19,11 @@ public class Customers {
 
         int count = 0;
 
-        // TODO
+        for  (Customer customer : this.customers) {
+            if (customer != null) {
+                count++;
+            }
+        }
 
         return count;
     }
@@ -30,7 +34,13 @@ public class Customers {
         boolean funnet = false;
         Customer c = null;
 
-        // TODO
+        for (Customer customer : this.customers) {
+            if (customer.getCustomerID() == customer_id) {
+                funnet = true;
+                c = customer;
+                break;
+            }
+        }
 
         return c;
     }
@@ -40,7 +50,13 @@ public class Customers {
 
         boolean inserted = false;
 
-        // TODO
+        for (int j = 0; j < customers.length; j++) {
+            if (customers[j] == null) {
+                customers[j] = c;
+                inserted = true;
+                break;
+            }
+        }
 
         return inserted;
     }
@@ -64,5 +80,11 @@ public class Customers {
         // TODO
 
         return customers;
+    }
+
+    public void printCustomers() {
+        for (Customer customer : this.customers) {
+            System.out.println(customer);
+        }
     }
 }

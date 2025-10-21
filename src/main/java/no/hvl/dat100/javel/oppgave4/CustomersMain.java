@@ -12,12 +12,14 @@ public class CustomersMain {
         System.out.println("==============");
         System.out.println();
 
-        /*
-        TODO
-
-         Write code that uses and tests the methods implemented in the Customers class
-
-        */
+        Customers customers = new Customers(5);
+        Customer sander = new Customer("Sander", "Sander", 5, PowerAgreementType.SPOTPRICE);
+        Customer teo = new Customer("Teodor", "Teodor", 7, PowerAgreementType.NORGESPRICE);
+        customers.addCustomer(sander);
+        customers.addCustomer(teo);
+        System.out.println(customers.getCustomer(5));
+        System.out.println(customers.getCustomer(7));
+        //customers.printCustomers();
 
     }
 }

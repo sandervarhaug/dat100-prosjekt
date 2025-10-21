@@ -16,6 +16,26 @@ public class DayMain {
         System.out.println("==============");
         System.out.println();
 
+        DailyPower.printPowerPrices(powerprices_day);
+        DailyPower.printPowerUsage(powerusage_day);
+        double powerUseTotal = DailyPower.computePowerUsage(powerusage_day);
+        System.out.println(powerUseTotal + " KwH");
+        double priceTotal = DailyPower.computeSpotPrice(powerusage_day, powerprices_day);
+        System.out.printf("%.2f NOK",  priceTotal);
+        System.out.println();
+        double support = DailyPower.computePowerSupport(powerusage_day, powerprices_day);
+        System.out.printf("%.2f NOK",  support);
+        System.out.println();
+        double norgesPris = DailyPower.computeNorgesPrice(powerusage_day);
+        System.out.printf("%.2f NOK",  norgesPris);
+        System.out.println();
+
+        double average = DailyPower.findAvgPower(powerusage_day);
+        System.out.printf("%.2f KwH",  average);
+        System.out.println();
+
+
+
         /*
         TODO
 
