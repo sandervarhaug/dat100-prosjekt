@@ -88,16 +88,19 @@ public class MonthlyPower {
 
         double support = 0;
 
-        int i = 0;
-        for (double[] priceRad : prices) {
-            int j = 0;
-            for (double price : priceRad) {
-                if (price > 0.9375) {
-                    support += usage[i][j] * (price * 0.9);
+        double threshold = 0.9375;
+        double share = 0.9;
+
+        for (int i = 0; i < usage.length; i++) {
+            for (int k = 0; k <usage[i].length; k++) {
+                double price = prices[i][k];
+                double used = usage[i][k];
+
+                if (price > threshold) {
+                    double above = price - threshold;
+                    support += used * above * share;
                 }
-                j++;
             }
-            i++;
         }
 
         System.out.printf("%.2f" + "kr (strømstøtte, når prisen er over 0.9375 øre", support);
