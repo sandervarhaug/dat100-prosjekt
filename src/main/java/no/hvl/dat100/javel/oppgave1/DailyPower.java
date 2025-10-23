@@ -91,10 +91,19 @@ public class DailyPower {
     // g) compute peak usage during a single day
     public static double findPeakUsage(double[] usage) {
 
-        double temp_max = 0;
+        double temp_max = usage[0];
 
-        // TODO
+        for (int i = 1; i < usage.length; i++) {
+            if (usage[i] > temp_max) {
+                temp_max = usage[i];
+            }
+        }
 
+
+
+        System.out.printf("%.2f" + " største forbruk i kWh den dagen", temp_max);
+        System.out.println();
+        System.out.println("==============");
         return temp_max;
     }
 

@@ -30,6 +30,10 @@ public class DayMain {
         System.out.printf("%.2f NOK",  norgesPris);
         System.out.println();
 
+        double peak = DailyPower.findPeakUsage(powerusage_day);
+
+        System.out.println(peak);
+
         double average = DailyPower.findAvgPower(powerusage_day);
         System.out.printf("%.2f KwH",  average);
         System.out.println();

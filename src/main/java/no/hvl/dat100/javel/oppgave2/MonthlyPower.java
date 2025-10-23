@@ -70,7 +70,7 @@ public class MonthlyPower {
         double price = 0;
 
         if (usage.length == prices.length) {
-            for (int i = 0; i < usage.length-1; i++) {
+            for (int i = 0; i < usage.length; i++) {
                 for (int k = 0; k < usage[i].length-1; k++) {
                     price += usage[i][k]*prices[i][k];
                 }
