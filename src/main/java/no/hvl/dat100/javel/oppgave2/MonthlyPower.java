@@ -7,23 +7,44 @@ public class MonthlyPower {
     // a) print power usage for a month
     public static void print_PowerUsage(double[][] usage) {
 
-        // TODO
-
+        for (int i = 0; i<usage.length; i++){
+            System.out.print("Day " + i + ":");
+            for (int k = 0; k<usage[i].length; k++){
+                System.out.printf("%.2f" + " kWh ", usage[i][k]);
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("==============");
     }
 
     // b) print power prices for a month
     public static void print_PowerPrices(double[][] prices) {
 
-        // TODO
-
+        for (int i = 0; i<prices.length; i++){
+            System.out.print("Day " + i + ":");
+            for (int k = 0; k<prices[i].length; k++){
+                System.out.printf("%.2f" + " kr ", prices[i][k]);
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println("==============");
     }
 
     // c) compute total power usage for a month
     public static double computePowerUsage(double[][] usage) {
 
-        double sum = 0;
+        double sum = 550;
 
-        // TODO
+        for (int i = 0; i<usage.length; i++){
+            for (int k = 0; k<usage[i].length; k++){
+                sum += usage[i][k];
+            }
+        }
+        System.out.printf("%.2f" + " kWh totalt (månad)", sum);
+        System.out.println();
+        System.out.println("==============");
 
         return sum;
     }
@@ -32,20 +53,33 @@ public class MonthlyPower {
     public static boolean exceedThreshold(double[][] powerusage, double threshold) {
 
         boolean exceeded = false;
-        double usage = 0;
 
-        // TODO
-
+        while (computePowerUsage(powerusage) > threshold){
+            exceeded = true;
+            break;
+        }
+        System.out.println("Om forbruk er over 1000 kWh, får vi resultat true");
+        System.out.print(exceeded);
+        System.out.println();
+        System.out.println("==============");
         return exceeded;
     }
-
     // e) compute spot price
     public static double computeSpotPrice(double[][] usage, double[][] prices) {
 
         double price = 0;
 
-        // TODO
+        if (usage.length == prices.length) {
+            for (int i = 0; i < usage.length-1; i++) {
+                for (int k = 0; k < usage[i].length-1; k++) {
+                    price += usage[i][k]*prices[i][k];
+                }
+            }
+        }
 
+        System.out.printf("%.2f" + " kr (spotpris, mådespris uten strømstøtte)", price);
+        System.out.println();
+        System.out.println("==============");
         return price;
     }
 
@@ -54,8 +88,21 @@ public class MonthlyPower {
 
         double support = 0;
 
-        // TODO
+        int i = 0;
+        for (double[] priceRad : prices) {
+            int j = 0;
+            for (double price : priceRad) {
+                if (price > 0.9375) {
+                    support += usage[i][j] * (price * 0.9);
+                }
+                j++;
+            }
+            i++;
+        }
 
+        System.out.printf("%.2f" + "kr (strømstøtte, når prisen er over 0.9375 øre", support);
+        System.out.println();
+        System.out.println("==============");
         return support;
     }
 
@@ -64,8 +111,20 @@ public class MonthlyPower {
 
         double price = 0;
 
-        // TODO
+        int i = 0;
+        for (double[] usageRad : usage) {
+            int j = 0;
+            for (double bruk : usageRad) {
+                price += bruk * 0.5;
+                j++;
+            }
+            i++;
+        }
 
+        System.out.printf("%.2f" + "kr (norgespris)", price);
+        System.out.println();
+        System.out.println("==============");
         return price;
     }
 }
+
