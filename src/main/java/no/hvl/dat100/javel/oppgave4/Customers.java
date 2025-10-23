@@ -67,7 +67,15 @@ public class Customers {
         boolean deleted = false;
         Customer c = null;
 
-        // TODO
+        int i = 0;
+        for (Customer customer : this.customers) {
+            if (customer.getCustomerID() == customer_id) {
+                customers[i] = c;
+                deleted = true;
+                break;
+            }
+            i++;
+        }
 
         return c;
     }
@@ -77,7 +85,16 @@ public class Customers {
 
         Customer[] customers = null;
 
-        // TODO
+        int count = countNonNull();
+        customers = new Customer[count];
+
+        int index = 0;
+        for (Customer c : this.customers) {
+            if (c != null) {
+                customers[index] = c;
+                index++;
+            }
+        }
 
         return customers;
     }

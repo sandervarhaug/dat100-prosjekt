@@ -17,9 +17,13 @@ public class CustomersMain {
         Customer teo = new Customer("Teodor", "Teodor", 7, PowerAgreementType.NORGESPRICE);
         customers.addCustomer(sander);
         customers.addCustomer(teo);
-        System.out.println(customers.getCustomer(5));
-        System.out.println(customers.getCustomer(7));
+        //System.out.println(customers.getCustomer(5));
+        //System.out.println(customers.getCustomer(7));
         //customers.printCustomers();
+
+        for (Customer a : customers.getCustomers()) {
+            System.out.println(a);
+        }
 
     }
 }
