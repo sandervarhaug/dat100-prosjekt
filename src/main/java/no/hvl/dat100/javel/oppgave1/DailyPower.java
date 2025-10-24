@@ -55,8 +55,15 @@ public class DailyPower {
 
         double support = 0;
 
-        usage -= THRESHOLD;
-        support = usage * PERCENTAGE;
+        double PricePerKwH = usage * price;
+        PricePerKwH = PricePerKwH - THRESHOLD;
+        if (PricePerKwH < 0) {
+
+        }
+        else if (PricePerKwH > 0) {
+            support =  PricePerKwH * PERCENTAGE;
+        }
+
 
         return support;
     }
